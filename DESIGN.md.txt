@@ -1,0 +1,94 @@
+# Design System Strategy: The Architectural Recruiter
+ 
+This design system moves away from the "commodity" look of standard job boards. Instead of a cluttered grid of boxes, it treats career discovery as a high-end editorial experience. We leverage a sophisticated blue-on-white palette, but we elevate it through structural layering, "No-Line" boundaries, and a hierarchy that prioritizes cognitive ease and professional authority.
+ 
+---
+ 
+### 1. Creative North Star: The Curated Workspace
+The "Curated Workspace" philosophy views the interface not as a list of data, but as a physical environment. We replace the rigid, "boxed-in" feel of traditional UIs with a system of overlapping surfaces and intentional white space. The goal is "Professional Flow"—an interface that feels as organized as a premium architectural portfolio.
+ 
+**Key Deviations from Standard UI:**
+- **Asymmetric Composition:** Hero sections and listing layouts should avoid perfect symmetry to create a dynamic, editorial feel.
+- **Tonal Boundaries:** We never use lines to separate content; we use light.
+- **Textural Depth:** Subtle gradients and glassmorphism replace flat fills to add "soul" to the professional atmosphere.
+ 
+---
+ 
+### 2. Colors & Surface Logic
+ 
+We utilize a sophisticated range of blues and neutrals to define the hierarchy. The interaction between `surface` and `surface-container` is the foundation of the system’s "physicality."
+ 
+#### The "No-Line" Rule
+Explicitly prohibited: 1px solid borders for sectioning. Boundaries must be defined solely through background color shifts. 
+*   **Example:** A job search sidebar should use `surface-container-low`, sitting directly against a `surface` background. The transition between these two tones is the boundary.
+ 
+#### Surface Hierarchy & Nesting
+Treat the UI as stacked sheets of fine paper.
+- **Base Layer:** `surface` (#f8f9fb)
+- **Secondary Sections:** `surface-container-low` (#f3f4f6)
+- **Actionable Cards:** `surface-container-lowest` (#ffffff) for maximum "pop."
+- **Nesting Logic:** An inner "Quick Apply" modal should use `surface-container-highest` to feel closest to the user.
+ 
+#### The "Glass & Gradient" Rule
+To avoid a "flat template" look:
+- **Floating Navigation:** Use `surface-container-lowest` with an 80% opacity and a `backdrop-filter: blur(12px)`.
+- **Primary CTAs:** Instead of a flat `primary` fill, use a subtle linear gradient from `primary` (#003d9b) to `primary_container` (#0052cc) at a 135-degree angle. This adds a "jewel-like" quality to actions.
+ 
+---
+ 
+### 3. Typography: The Editorial Voice
+ 
+We pair **Manrope** (Display/Headline) with **Inter** (Body) to balance character with utility.
+ 
+| Role | Token | Font | Size | Weight/Intent |
+| :--- | :--- | :--- | :--- | :--- |
+| **Hero Title** | `display-lg` | Manrope | 3.5rem | Bold, authoritative. Use for major headings. |
+| **Job Title** | `headline-sm` | Manrope | 1.5rem | Semi-bold. The primary focal point of a listing. |
+| **Secondary Info** | `title-sm` | Inter | 1.0rem | Medium. Used for company names and locations. |
+| **Body Copy** | `body-md` | Inter | 0.875rem | Regular. Optimized for long-form job descriptions. |
+| **Metadata** | `label-md` | Inter | 0.75rem | All-caps or tracking +5% for "Salary" or "Posted Date." |
+ 
+---
+ 
+### 4. Elevation & Depth: Tonal Layering
+ 
+Traditional shadows are often "dirty." This system uses **Ambient Shadows** and **Tonal Stacking**.
+ 
+- **The Layering Principle:** To lift a job card, place a `surface-container-lowest` (pure white) card on a `surface-container-low` background. The color contrast creates the lift.
+- **Ambient Shadows:** For "floating" elements like dropdowns or mobile navigation, use: `box-shadow: 0 12px 40px rgba(25, 28, 30, 0.06)`. Note the low opacity (6%) and large blur—it should feel like a soft glow, not a dark smudge.
+- **The "Ghost Border" Fallback:** If a border is required for accessibility, use `outline-variant` at 20% opacity. 100% opaque borders are strictly forbidden.
+ 
+---
+ 
+### 5. Components & Interaction Patterns
+ 
+#### Cards & Listings
+- **Rule:** No divider lines between list items.
+- **Execution:** Use `24px` vertical spacing between cards. Each card uses `surface-container-lowest` with a `lg` (0.5rem) corner radius.
+- **Hover State:** On hover, a card should shift from `surface-container-lowest` to a subtle gradient of `primary_fixed` to `surface_container_lowest`.
+ 
+#### Buttons (Primary & Secondary)
+- **Primary:** Gradient-filled (Primary to Primary-Container), `xl` (0.75rem) rounded corners. Text is `on_primary`.
+- **Secondary:** `surface-container-high` background with `primary` text. No border.
+ 
+#### Form Inputs
+- **Static State:** `surface-container-low` background with a `Ghost Border` (outline-variant @ 15%).
+- **Active State:** Background shifts to `surface-container-lowest`, border becomes `primary` (2px).
+ 
+#### Search & Filter Chips
+- **Selection Chips:** Use `full` (pill) rounding. Unselected: `surface-container-high`. Selected: `primary` with `on_primary` text.
+ 
+---
+ 
+### 6. Do’s and Don’ts
+ 
+#### Do
+*   **Do** use asymmetrical layouts (e.g., a wide column for job details and a narrow sticky column for the application form).
+*   **Do** use `tertiary` (#7b2600) sparingly for high-urgency highlights like "Closing Soon" or "New Match."
+*   **Do** lean into `surface-bright` for headers to create a crisp, clean start to the page.
+ 
+#### Don’t
+*   **Don’t** use `primary` for anything other than the most important action on the screen.
+*   **Don’t** use black (#000000). Use `on_surface` (#191c1e) for all text to maintain a premium, soft-contrast feel.
+*   **Don’t** use `sm` or `none` roundedness for cards. This system requires `lg` or `xl` to maintain an approachable, modern professional vibe.
+*   **Don’t** use standard "Blue 500" defaults. Always reference the specific `primary` (#003d9b) or `surface_tint` to maintain the architectural tone.

@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Virtual environment
+venv/
+env/
+.env
+.venv
+
+# Database (로컬 수집 데이터)
+*.db
+*.sqlite
+*.sqlite3
+
+# Local data files
+bookmarks.json
+
+# Settings (개인 필터 설정 — 필요 시 제외 해제)
+settings.json
+
+# Logs
+*.log
+/tmp/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Claude Code session
+.claude/
