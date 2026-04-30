@@ -1,6 +1,7 @@
 # Job Filter — 채용공고 필터링 웹앱
 
 UX/프로덕트 디자이너 채용공고를 자동 수집하고, Must Have 조건으로 필터링해 보여주는 로컬 웹앱입니다.
+<img width="1726" height="1203" alt="image" src="https://github.com/user-attachments/assets/74a97468-bc9d-4c8a-831c-902a64cf2315" />
 
 ## 주요 기능
 
